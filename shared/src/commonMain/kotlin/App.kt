@@ -46,10 +46,11 @@ fun BirdAppTheme(
 
 @Composable
 fun App() {
-    BirdAppTheme {
-        val birdsViewModel = getViewModel(Unit, viewModelFactory { BirdsViewModel() })
-        BirdsPage(birdsViewModel)
-    }
+//    BirdAppTheme {
+//        val birdsViewModel = getViewModel(Unit, viewModelFactory { BirdsViewModel() })
+//        BirdsPage(birdsViewModel)
+//    }
+    CategoryChipsList()
 }
 
 @Composable
@@ -105,6 +106,15 @@ fun BirdImageCell(image: BirdImage) {
         contentScale = ContentScale.Crop,
         modifier = Modifier.fillMaxWidth().aspectRatio(1.0f)
     )
+}
+
+@Composable
+private fun CategoryChipsList() {
+    Column(modifier = Modifier.padding(12.dp)) {
+        CategoryModel.values().forEach {
+            CategoryChip(color = it.color, text = it.text, icon = it.icon)
+        }
+    }
 }
 
 
