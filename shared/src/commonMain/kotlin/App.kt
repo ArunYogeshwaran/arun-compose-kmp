@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.AbsoluteCutCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -22,8 +24,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import dev.icerock.moko.mvvm.compose.getViewModel
-import dev.icerock.moko.mvvm.compose.viewModelFactory
 import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import model.BirdImage
@@ -110,9 +110,9 @@ fun BirdImageCell(image: BirdImage) {
 
 @Composable
 private fun CategoryChipsList() {
-    Column(modifier = Modifier.padding(12.dp)) {
+    Column(modifier = Modifier.padding(8.dp).verticalScroll(rememberScrollState())) {
         CategoryModel.values().forEach {
-            CategoryChip(color = it.color, text = it.text, icon = it.icon)
+            CategoryChip(color = it.surface, text = it.name, icon = it.icon, tint = it.tint)
         }
     }
 }
